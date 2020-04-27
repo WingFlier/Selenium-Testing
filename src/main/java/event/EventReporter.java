@@ -80,21 +80,15 @@ public class EventReporter implements WebDriverEventListener
         try
         {
             String id = element.getAttribute("id");
+            String className = element.getAttribute("class");
             if (!id.trim().equals(""))
                 System.out.println("id " + id);
-        } catch (NullPointerException ignored)
-        {
-        }
-        try
-        {
-            String className = element.getAttribute("class");
-            if (!className.trim().equals(""))
-            {
+            else if (!className.trim().equals(""))
                 System.out.println("class name is" + className);
-            }
         } catch (NullPointerException ignored)
         {
         }
+
     }
 
 
