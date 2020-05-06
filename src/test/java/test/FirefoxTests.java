@@ -10,7 +10,6 @@ import pages.HomePage;
 
 public class FirefoxTests extends BaseTest
 {
-	private LoginTest loginTest;
 
 	public FirefoxTests()
 	{
@@ -22,7 +21,7 @@ public class FirefoxTests extends BaseTest
 	@Test
 	public void testSuccessfulLoginFirefox()
 	{
-		driver.get("http://www.quizful.net/test");
+		driver.get(website);
 		homePage = new HomePage(driver);
 		loginTest.testSuccessfulLogin(homePage);
 	}
@@ -30,7 +29,7 @@ public class FirefoxTests extends BaseTest
 	@Test
 	public void testFailFireFox()
 	{
-		driver.get("http://www.quizful.net/test");
+		driver.get(website);
 		homePage = new HomePage(driver);
 		loginTest.testFailLogin(homePage);
 	}

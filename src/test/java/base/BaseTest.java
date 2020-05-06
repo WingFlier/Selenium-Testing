@@ -19,6 +19,9 @@ public class BaseTest
 
 	protected HomePage homePage;
 	protected URL url;
+	protected String website;
+
+	protected LoginTest loginTest;
 
 	@BeforeClass
 	public void setUp() throws MalformedURLException
@@ -28,7 +31,7 @@ public class BaseTest
 		driver.register(new EventReporter());*/
 
 		url = new URL("http://localhost:4444/wd/hub");
-
+		website = "http://www.quizful.net/test";
 
 	}
 
