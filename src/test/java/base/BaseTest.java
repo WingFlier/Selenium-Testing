@@ -1,7 +1,7 @@
 package base;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
 import java.net.MalformedURLException;
@@ -36,7 +36,7 @@ public class BaseTest
 	}
 
 
-	@AfterClass
+	@AfterMethod
 	public void off()
 	{
 		driver.quit();

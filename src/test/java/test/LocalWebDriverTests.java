@@ -6,6 +6,8 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.net.MalformedURLException;
+
 import base.BaseTest;
 import base.LoginTest;
 import event.EventReporter;
@@ -15,14 +17,15 @@ public class LocalWebDriverTests extends BaseTest
 {
 
 
-	@org.testng.annotations.BeforeClass
-	@Override
 	@BeforeMethod
-	public void setUp()
+	@Override
+	public void setUp() throws MalformedURLException
 	{
+		super.setUp();
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
 		driver = new EventFiringWebDriver(new ChromeDriver(getChromeOptions()));
 		((EventFiringWebDriver) driver).register(new EventReporter());
+		driver.manage().window().maximize();
 		driver.get(website);
 		homePage = new HomePage(driver);
 		loginTest = new LoginTest();
@@ -45,5 +48,11 @@ public class LocalWebDriverTests extends BaseTest
 	public void testFail()
 	{
 		loginTest.testFailLogin(homePage);
+	}
+
+	@Test
+	public void testUserProfilePage()
+	{
+		loginTest.testUserData(homePage);
 	}
 }

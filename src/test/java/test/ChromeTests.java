@@ -3,7 +3,7 @@ package test;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
@@ -15,21 +15,19 @@ import pages.HomePage;
 public class ChromeTests extends BaseTest
 {
 
-	public ChromeTests()
-	{
-		driver = new RemoteWebDriver(url, DesiredCapabilities.firefox());
-		loginTest = new LoginTest();
-	}
-
-	@BeforeClass
+	@BeforeMethod
 	@Override
 	public void setUp() throws MalformedURLException
 	{
 		super.setUp();
 		Capabilities chromeCap = DesiredCapabilities.chrome();
+
 		driver = new RemoteWebDriver(url, chromeCap);
+		driver.manage().window().maximize();
 		driver.get(website);
 		homePage = new HomePage(driver);
+
+		loginTest = new LoginTest();
 	}
 
 	@Test
@@ -43,5 +41,11 @@ public class ChromeTests extends BaseTest
 	public void testFailChrome()
 	{
 		loginTest.testFailLogin(homePage);
+	}
+
+	@Test
+	public void testUserProfilePage()
+	{
+		loginTest.testUserData(homePage);
 	}
 }

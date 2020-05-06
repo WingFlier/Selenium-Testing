@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by Tiko on 4/27/2020.
  */
@@ -39,8 +41,7 @@ public class LoginPage
 
 	public MainPage clickBtnCorrect()
 	{
-		WebDriverWait wait = new WebDriverWait(this.driver, 2);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton));
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		driver.findElement(loginButton).click();
 		return new MainPage(driver);
 	}
