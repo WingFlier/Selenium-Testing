@@ -1,13 +1,12 @@
 package base;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 
-import event.EventReporter;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import pages.HomePage;
 
 /**
@@ -16,35 +15,27 @@ import pages.HomePage;
 
 public class BaseTest
 {
-    private EventFiringWebDriver driver;
-    protected HomePage homePage;
+	protected WebDriver driver;
 
-    @BeforeClass
-    public void setUp()
-    {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-        driver = new EventFiringWebDriver(new ChromeDriver(getChromeOptions()));
-        driver.register(new EventReporter());
-        goHome();
-    }
+	protected HomePage homePage;
+	protected URL url;
 
-    @BeforeMethod
-    private void goHome()
-    {
-        driver.get("http://www.quizful.net/test");
-        homePage = new HomePage(driver);
-    }
+	@BeforeClass
+	public void setUp() throws MalformedURLException
+	{
+		/*System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+		driver = new EventFiringWebDriver(new ChromeDriver(getChromeOptions()));
+		driver.register(new EventReporter());*/
 
-    @AfterClass
-    public void off()
-    {
-        driver.quit();
-    }
+		url = new URL("http://localhost:4444/wd/hub");
 
-    private ChromeOptions getChromeOptions()
-    {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("disable-infobars");
-        return options;
-    }
+
+	}
+
+
+	@AfterClass
+	public void off()
+	{
+		driver.quit();
+	}
 }
