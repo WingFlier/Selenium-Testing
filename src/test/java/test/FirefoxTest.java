@@ -12,7 +12,7 @@ import base.BaseTest;
 import base.LoginTest;
 import pages.HomePage;
 
-public class FirefoxTests extends BaseTest
+public class FirefoxTest extends BaseTest
 {
 
 	@BeforeMethod

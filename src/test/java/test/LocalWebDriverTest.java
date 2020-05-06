@@ -13,7 +13,7 @@ import base.LoginTest;
 import event.EventReporter;
 import pages.HomePage;
 
-public class LocalWebDriverTests extends BaseTest
+public class LocalWebDriverTest extends BaseTest
 {
 
 
