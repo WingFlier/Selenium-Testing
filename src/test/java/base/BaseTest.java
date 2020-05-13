@@ -22,7 +22,7 @@ public class BaseTest
     @BeforeClass
     public void setUp()
     {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new EventFiringWebDriver(new ChromeDriver(getChromeOptions()));
         driver.register(new EventReporter());
         goHome();
@@ -38,7 +38,7 @@ public class BaseTest
     @AfterClass
     public void off()
     {
-        driver.quit();
+//        driver.quit();
     }
 
     private ChromeOptions getChromeOptions()

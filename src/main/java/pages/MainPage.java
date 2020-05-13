@@ -12,6 +12,8 @@ public class MainPage
     WebDriver driver;
 
     private By nicknameText = By.xpath(".//a[@href='/user/testingthis'][@rel='nofollow']");
+    private By articlesPageUrl = By.linkText("Статьи");
+
 
     public MainPage(WebDriver driver)
     {
@@ -20,5 +22,11 @@ public class MainPage
 
     public String getUsername(){
         return driver.findElement(nicknameText).getText();
+    }
+
+    public ArticlePage clickBtnArticles()
+    {
+        driver.findElement(articlesPageUrl).click();
+        return new ArticlePage(driver);
     }
 }
