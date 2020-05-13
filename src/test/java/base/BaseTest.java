@@ -38,7 +38,7 @@ public class BaseTest
     @AfterClass
     public void off()
     {
-//        driver.quit();
+        driver.quit();
     }
 
     private ChromeOptions getChromeOptions()
